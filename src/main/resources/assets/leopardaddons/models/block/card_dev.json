@@ -1,0 +1,9 @@
+{ 
+	"parent": "minecraft:block/orientable_with_bottom",
+	"textures": { 
+		"front": "leopardaddons:block/cd_front",
+		"side": "leopardaddons:block/cd_side",
+		"top": "leopardaddons:block/cd_top",
+		"bottom": "leopardaddons:block/cd_base"
+	}
+}

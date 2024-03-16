@@ -1,0 +1,8 @@
+{ 
+	"variants": { 
+		"facing=north": { "model": "leopardaddons:block/kiosk", "y": 180 },
+		"facing=south": { "model": "leopardaddons:block/kiosk" },
+		"facing=east": { "model": "leopardaddons:block/kiosk", "y": 270 },
+		"facing=west": { "model": "leopardaddons:block/kiosk", "y": 90 }
+	}
+}
