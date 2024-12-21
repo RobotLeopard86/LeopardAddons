@@ -5,7 +5,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -39,16 +41,16 @@ public class CardDeviceBlock extends Block implements EntityBlock {
 		baseState = baseState.setValue(empty, true);
 		return baseState;
 	}
-
-	@Override
-	public MutableComponent getName() {
-		return Component.translatable("block.leopardaddons.card_device");
-	}
 	
 	@Override
-    public final InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		return world.getBlockEntity(pos) instanceof CardDeviceBE dev ? dev.use(player, hand) : InteractionResult.PASS;
+    protected final InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+		return world.getBlockEntity(pos) instanceof CardDeviceBE dev ? dev.use(player).result() : InteractionResult.PASS;
     }
+
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		return world.getBlockEntity(pos) instanceof CardDeviceBE dev ? dev.use(player, stack, hand) : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+	}
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

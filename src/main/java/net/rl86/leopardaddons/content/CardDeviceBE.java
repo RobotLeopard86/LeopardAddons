@@ -3,16 +3,15 @@ package net.rl86.leopardaddons.content;
 import dan200.computercraft.api.peripheral.IPeripheral;
 import dan200.computercraft.shared.common.AbstractContainerBlockEntity;
 import dan200.computercraft.shared.container.BasicWorldlyContainer;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.Position;
+import net.minecraft.core.*;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -24,14 +23,13 @@ import net.rl86.leopardaddons.registries.ItemRegistry;
 public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicWorldlyContainer, Position {
 	private static final int[] SLOTS = { 0 };
 	private final NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
-	private CardDevicePeripheral peripheral;
+	private final CardDevicePeripheral peripheral;
 
 	public CardDeviceBE(BlockPos pos, BlockState state) {
 		super(BETypeRegistry.cardBE.get(), pos, state);
 		peripheral = new CardDevicePeripheral(this);
 	}
 
-	@Override
 	public NonNullList<ItemStack> getContents() {
 		return inventory;
 	}
@@ -47,15 +45,15 @@ public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicW
 	}
 	
 	@Override
-	public void load(CompoundTag tag) {
-		super.load(tag);
-		ContainerHelper.loadAllItems(tag, inventory);
+	public void loadAdditional(CompoundTag tag, HolderLookup.Provider p) {
+		super.loadAdditional(tag, p);
+		ContainerHelper.loadAllItems(tag, inventory, p);
 	}
 
 	@Override
-	protected void saveAdditional(CompoundTag tag) {
-		super.saveAdditional(tag);
-		ContainerHelper.saveAllItems(tag, inventory);
+	protected void saveAdditional(CompoundTag tag, HolderLookup.Provider p ) {
+		super.saveAdditional(tag, p);
+		ContainerHelper.saveAllItems(tag, inventory, p);
 	}
 	
 	public void forceDrop() {
@@ -71,7 +69,7 @@ public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicW
 		if(inventory.get(0).isEmpty()) {
 			ItemStack itm = new ItemStack(ItemRegistry.card.get());
 			if(!name.equalsIgnoreCase("")) {
-				itm.setHoverName(Component.literal(name));
+				itm.set(DataComponents.CUSTOM_NAME, Component.literal(name));
 			}
 			inventory.set(0, itm);
 			level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(CardDeviceBlock.empty, false));
@@ -79,32 +77,35 @@ public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicW
 		}
 	}
 
-	public InteractionResult use(Player player, InteractionHand hand) {
+	public ItemInteractionResult use(Player player) {
+		return use(player, ItemStack.EMPTY, InteractionHand.MAIN_HAND);
+	}
+
+	public ItemInteractionResult use(Player player, ItemStack stack, InteractionHand hand) {
 		if(inventory.get(0).isEmpty()) {
-			if(!(player.getItemInHand(hand).getItem() instanceof CardItem)) {
-				return InteractionResult.PASS;
+			if(!(stack.getItem() instanceof CardItem)) {
+				return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			} else {
-				inventory.set(0, player.getItemInHand(hand));
+				inventory.set(0, stack);
 				if(player.isCreative()) player.setItemInHand(hand, ItemStack.EMPTY);
 				level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(CardDeviceBlock.empty, false));
 				super.setChanged();
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			}
 		} else {
-			if(player.getItemInHand(hand).getItem() instanceof CardItem) {
-				ItemStack pItem = player.getItemInHand(hand);
+			if(stack.getItem() instanceof CardItem) {
 				player.setItemInHand(hand, inventory.get(0));
-				inventory.set(0, pItem);
+				inventory.set(0, stack);
 				super.setChanged();
-				return InteractionResult.SUCCESS;
-			} else if(player.getItemInHand(hand).isEmpty()){
+				return ItemInteractionResult.SUCCESS;
+			} else if(stack.isEmpty()){
 				player.setItemInHand(hand, inventory.get(0));
 				inventory.set(0, ItemStack.EMPTY);
 				level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(CardDeviceBlock.empty, true));
 				super.setChanged();
-				return InteractionResult.SUCCESS;
+				return ItemInteractionResult.SUCCESS;
 			} else {
-				return InteractionResult.PASS;
+				return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 			}
 		}
 	}
@@ -134,4 +135,11 @@ public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicW
 		return this.getBlockPos().getZ();
 	}
 
+	@Override
+	public NonNullList<ItemStack> getItems() {
+		return NonNullList.of(ItemStack.EMPTY);
+	}
+
+	@Override
+	protected void setItems(NonNullList<ItemStack> p_332640_) {}
 }

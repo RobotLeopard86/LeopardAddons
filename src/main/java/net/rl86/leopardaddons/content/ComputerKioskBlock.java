@@ -6,7 +6,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -53,11 +55,16 @@ public class ComputerKioskBlock extends Block implements EntityBlock {
 	public MutableComponent getName() {
 		return Component.translatable("block.leopardaddons.kiosk");
 	}
-	
+
 	@Override
-    public final InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        return world.getBlockEntity(pos) instanceof KioskBE kiosk ? kiosk.use(player, hand) : InteractionResult.PASS;
-    }
+	protected final InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
+		return world.getBlockEntity(pos) instanceof KioskBE k ? k.use(player).result() : InteractionResult.PASS;
+	}
+
+	@Override
+	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+		return world.getBlockEntity(pos) instanceof KioskBE k ? k.use(player, stack, hand) : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+	}
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

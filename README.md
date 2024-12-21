@@ -10,8 +10,8 @@ Leopard Addons is a NeoForge-based mod for Minecraft: Java Edition, adding some 
 * Card Devices to read and write card data using CC: Tweaked Computers
 
 ## Dependencies
-* NeoForged for Minecraft: Java Edition 1.20.4, version 20.4.151-beta+
-* CC: Tweaked for Minecraft: Java Edition 1.20.1, version 1.109.6
+* NeoForged for Minecraft: Java Edition 1.21.1, version 20.4.151-beta+
+* CC: Tweaked for Minecraft: Java Edition 1.21, version 1.113.1+
 
 ## Building
 This project builds like any other NeoForged mod, simply set up using Gradle in your IDE of choice (or not)

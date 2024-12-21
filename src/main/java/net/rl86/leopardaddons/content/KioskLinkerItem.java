@@ -1,10 +1,12 @@
 package net.rl86.leopardaddons.content;
 
 import dan200.computercraft.shared.computer.blocks.AbstractComputerBlock;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -20,8 +22,8 @@ public class KioskLinkerItem extends Item {
 		Level level = context.getLevel();
 		Block selectedBlock = level.getBlockState(context.getClickedPos()).getBlock();
 		if(selectedBlock instanceof ComputerKioskBlock) {
-			if(!context.getItemInHand().hasTag()) return InteractionResult.PASS;
-			CompoundTag nbt = context.getItemInHand().getTag();
+			if(!context.getItemInHand().has(DataComponents.CUSTOM_DATA)) return InteractionResult.PASS;
+			CompoundTag nbt = context.getItemInHand().get(DataComponents.CUSTOM_DATA).copyTag();
 			if(!nbt.contains("link")) return InteractionResult.PASS;
 			CompoundTag lnk = nbt.getCompound("link");
 			if(!lnk.contains("x") || !lnk.contains("y") || !lnk.contains("z")) return InteractionResult.PASS;
@@ -31,13 +33,13 @@ public class KioskLinkerItem extends Item {
 			
 			return InteractionResult.SUCCESS;
 		} else if(selectedBlock instanceof AbstractComputerBlock) {
-			CompoundTag nbt = context.getItemInHand().getOrCreateTag();
+			CompoundTag nbt = context.getItemInHand().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
 			CompoundTag lnk = new CompoundTag();
 			lnk.put("x", IntTag.valueOf(context.getClickedPos().getX()));
 			lnk.put("y", IntTag.valueOf(context.getClickedPos().getY()));
 			lnk.put("z", IntTag.valueOf(context.getClickedPos().getZ()));
 			nbt.put("link", lnk);
-			context.getItemInHand().setTag(nbt);
+			context.getItemInHand().set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;

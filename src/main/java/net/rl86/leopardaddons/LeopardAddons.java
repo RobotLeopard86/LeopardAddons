@@ -6,6 +6,7 @@ import net.minecraft.server.MinecraftServer;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
@@ -51,7 +52,7 @@ public class LeopardAddons
         server = event.getServer();
     }
 
-    @Mod.EventBusSubscriber(modid=modId, bus=Mod.EventBusSubscriber.Bus.MOD, value=Dist.CLIENT)
+    @EventBusSubscriber(modid=modId, bus= EventBusSubscriber.Bus.MOD, value=Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {

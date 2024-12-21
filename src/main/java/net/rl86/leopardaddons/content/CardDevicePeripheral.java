@@ -6,7 +6,9 @@ import dan200.computercraft.api.lua.Coerced;
 import dan200.computercraft.api.lua.LuaException;
 import dan200.computercraft.api.lua.LuaFunction;
 import dan200.computercraft.api.peripheral.IPeripheral;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.component.CustomData;
 
 public class CardDevicePeripheral implements IPeripheral {
 	private final CardDeviceBE physicalDevice;
@@ -30,7 +32,7 @@ public class CardDevicePeripheral implements IPeripheral {
 		if(physicalDevice.getContents().get(0).isEmpty()) throw new LuaException("Card device is empty!");
 		if(!(physicalDevice.getContents().get(0).getItem() instanceof CardItem)) throw new LuaException("Card device contains something that isn't a card... somehow... what have you done?");
 		
-		CompoundTag data = physicalDevice.getContents().get(0).getTag();
+		CompoundTag data = physicalDevice.getContents().get(0).get(DataComponents.CUSTOM_DATA).copyTag();
 		return (data.contains("Data") ? data.get("Data").getAsString() : "");
 	}
 	
@@ -39,9 +41,9 @@ public class CardDevicePeripheral implements IPeripheral {
 		if(physicalDevice.getContents().get(0).isEmpty()) throw new LuaException("Card device is empty!");
 		if(!(physicalDevice.getContents().get(0).getItem() instanceof CardItem)) throw new LuaException("Card device contains something that isn't a card... somehow... what have you done?");
 		
-		CompoundTag data = physicalDevice.getContents().get(0).getTag();
+		CompoundTag data = physicalDevice.getContents().get(0).get(DataComponents.CUSTOM_DATA).copyTag();
 		data.putString("Data", value.value());
-		physicalDevice.getContents().get(0).setTag(data);
+		physicalDevice.getContents().get(0).set(DataComponents.CUSTOM_DATA, CustomData.of(data));
 	}
 	
 	@LuaFunction(mainThread=true)
