@@ -1,18 +1,19 @@
 package net.rl86.leopardaddons.registries;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.rl86.leopardaddons.LeopardAddons;
+
+import java.util.function.Supplier;
 
 public class TabRegistry {
 	
-	public static final DeferredRegister<CreativeModeTab> registry = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, LeopardAddons.modId);
+	public static final DeferredRegister<CreativeModeTab> registry = DeferredRegister.create(BuiltInRegistries.CREATIVE_MODE_TAB, LeopardAddons.modId);
 
-	public static final RegistryObject<CreativeModeTab> tab = registry.register("leopardtab", () -> CreativeModeTab.builder()
+	public static final Supplier<CreativeModeTab> tab = registry.register("leopardtab", () -> CreativeModeTab.builder()
 			.title(Component.translatable("item_group." + LeopardAddons.modId + ".leopardtab"))
 			.icon(() -> new ItemStack(ItemRegistry.card.get()))
 			.displayItems((params, out) -> {

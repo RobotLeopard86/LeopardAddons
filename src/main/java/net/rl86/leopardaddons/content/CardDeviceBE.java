@@ -1,9 +1,6 @@
 package net.rl86.leopardaddons.content;
 
-import org.jetbrains.annotations.Nullable;
-
 import dan200.computercraft.api.peripheral.IPeripheral;
-import dan200.computercraft.shared.Capabilities;
 import dan200.computercraft.shared.common.AbstractContainerBlockEntity;
 import dan200.computercraft.shared.container.BasicWorldlyContainer;
 import net.minecraft.core.BlockPos;
@@ -21,33 +18,22 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.util.LazyOptional;
 import net.rl86.leopardaddons.registries.BETypeRegistry;
 import net.rl86.leopardaddons.registries.ItemRegistry;
 
 public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicWorldlyContainer, Position {
-
 	private static final int[] SLOTS = { 0 };
 	private final NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
-	private LazyOptional<IPeripheral> pp;
+	private CardDevicePeripheral peripheral;
 
 	public CardDeviceBE(BlockPos pos, BlockState state) {
 		super(BETypeRegistry.cardBE.get(), pos, state);
-		pp = LazyOptional.of(() -> new CardDevicePeripheral(this));
+		peripheral = new CardDevicePeripheral(this);
 	}
 
 	@Override
 	public NonNullList<ItemStack> getContents() {
 		return inventory;
-	}
-	
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, @Nullable Direction side) {
-		if(cap == Capabilities.CAPABILITY_PERIPHERAL) {
-			return pp.cast();
-		}
-		return super.getCapability(cap, side);
 	}
 
 	@Override
@@ -121,6 +107,10 @@ public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicW
 				return InteractionResult.PASS;
 			}
 		}
+	}
+
+	public IPeripheral getCCPeripheral() {
+		return peripheral;
 	}
 
 	@Override
