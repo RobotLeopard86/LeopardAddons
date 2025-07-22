@@ -8,10 +8,11 @@ Leopard Addons is a NeoForge-based mod for Minecraft: Java Edition, adding some 
 * Kiosks for remotely using CC: Tweaked computers
 * Cards to store arbitrary data in an item
 * Card Devices to read and write card data using CC: Tweaked Computers
+* invisiRails - they're rails, but invisible!
 
 ## Dependencies
-* NeoForged for Minecraft: Java Edition 1.21.1, version 20.4.151-beta+
-* CC: Tweaked for Minecraft: Java Edition 1.21, version 1.113.1+
+* NeoForged for Minecraft: Java Edition 1.21.1, version 21.1.93+
+* CC: Tweaked for Minecraft: Java Edition 1.21, version 1.116.1+
 
 ## Building
 This project builds like any other NeoForged mod, simply set up using Gradle in your IDE of choice (or not)
