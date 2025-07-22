@@ -3,5 +3,14 @@
 	"block.leopardaddons.kiosk": "Computer Kiosk",
 	"block.leopardaddons.card_device": "Card Device",
 	"item.leopardaddons.linker": "Kiosk Linker",
-	"item.leopardaddons.card": "Card"
+	"item.leopardaddons.card": "Card",
+	"block.leopardaddons.rail": "invisiRail",
+	"block.leopardaddons.powered_rail": "Powered invisiRail",
+	"block.leopardaddons.detector_rail": "Detector invisiRail",
+	"block.leopardaddons.activator_rail": "Activator invisiRail",
+	"block.leopardaddons.charged_dust_block": "Block of Charged Dust",
+	"block.leopardaddons.hardened_charged_dust_block": "Hardened Block of Charged Dust",
+	"item.leopardaddons.invisidust": "invisiDust",
+	"item.leopardaddons.charged_dust": "Charged Dust",
+	"item.leopardaddons.refined_dust": "Refined Dust"
 }

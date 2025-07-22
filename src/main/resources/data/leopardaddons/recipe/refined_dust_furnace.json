@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "leopardaddons:hardened_charged_dust_block"
+  },
+  "result": {
+    "id": "leopardaddons:refined_dust"
+  },
+  "experience": 1,
+  "cookingtime": 800
+}

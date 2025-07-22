@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "leopardaddons:block/hardened_charged_dust_block",
+    "south": "leopardaddons:block/hardened_charged_dust_block",
+    "west": "leopardaddons:block/hardened_charged_dust_block",
+    "east": "leopardaddons:block/hardened_charged_dust_block",
+    "up": "leopardaddons:block/hardened_charged_dust_block",
+    "down": "leopardaddons:block/hardened_charged_dust_block",
+    "particle": "leopardaddons:block/hardened_charged_dust_block"
+  }
+}

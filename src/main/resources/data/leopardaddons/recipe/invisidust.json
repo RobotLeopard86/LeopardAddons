@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "leopardaddons:refined_dust"
+    },
+    {
+      "item": "leopardaddons:refined_dust"
+    },
+    {
+      "item": "minecraft:golden_carrot"
+    },
+    {
+      "item": "minecraft:fermented_spider_eye"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "leopardaddons:invisidust"
+  }
+}

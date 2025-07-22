@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "leopardaddons:hardened_charged_dust_block"
+  },
+  "result": {
+    "id": "leopardaddons:refined_dust"
+  },
+  "experience": 4,
+  "cookingtime": 200
+}

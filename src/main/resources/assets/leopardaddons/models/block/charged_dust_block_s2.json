@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "leopardaddons:block/charged_dust_block_s2",
+    "south": "leopardaddons:block/charged_dust_block_s2",
+    "west": "leopardaddons:block/charged_dust_block_s2",
+    "east": "leopardaddons:block/charged_dust_block_s2",
+    "up": "leopardaddons:block/charged_dust_block_s2",
+    "down": "leopardaddons:block/charged_dust_block_s2",
+    "particle": "leopardaddons:block/charged_dust_block_s2"
+  }
+}

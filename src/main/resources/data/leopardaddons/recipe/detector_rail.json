@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "%": {
+      "item": "minecraft:detector_rail"
+    },
+    "$": {
+      "item": "leopardaddons:invisidust"
+    },
+    "@": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    " # ",
+    " % ",
+    "$@$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "leopardaddons:detector_rail"
+  }
+}

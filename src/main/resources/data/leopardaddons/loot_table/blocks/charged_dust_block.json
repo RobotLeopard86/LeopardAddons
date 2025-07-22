@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "enchantments": [
+                      {
+                        "enchantment": "minecraft:silk_touch",
+                        "levels": {
+                          "min": 1
+                        }
+                      }
+                    ]
+                  }
+                }
+              ],
+              "name": "leopardaddons:charged_dust_block"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:charged_dust",
+              "count": 9
+            }
+          ]
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

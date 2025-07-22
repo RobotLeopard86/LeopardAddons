@@ -1,0 +1,7 @@
+{
+  "ambientocclusion": false,
+  "elements": [],
+  "textures": {
+    "particle": "leopardaddons:item/rail"
+  }
+}

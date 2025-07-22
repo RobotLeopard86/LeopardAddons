@@ -2,6 +2,7 @@ package net.rl86.leopardaddons.content;
 
 import dan200.computercraft.shared.computer.blocks.AbstractComputerBlockEntity;
 import dan200.computercraft.shared.network.container.ComputerContainerData;
+import dan200.computercraft.shared.platform.PlatformHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -43,7 +44,7 @@ public class KioskBE extends BlockEntity {
 				ItemStack _stack = new ItemStack(this.getBlockState().getBlock());
 				_stack.applyComponents(computer.collectComponents());
 
-				new ComputerContainerData(serverComputer, _stack).open(player, computer);
+				PlatformHelper.get().openMenu(player, computer.getDisplayName(), computer, new ComputerContainerData(serverComputer, _stack));
 			}
 			return ItemInteractionResult.sidedSuccess(level.isClientSide);
 		} else {

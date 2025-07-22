@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "shape=ascending_east": {
+      "model": "leopardaddons:block/nada",
+      "y": 90
+    },
+    "shape=ascending_north": {
+      "model": "leopardaddons:block/nada"
+    },
+    "shape=ascending_south": {
+      "model": "leopardaddons:block/nada"
+    },
+    "shape=ascending_west": {
+      "model": "leopardaddons:block/nada",
+      "y": 90
+    },
+    "shape=east_west": {
+      "model": "leopardaddons:block/nada",
+      "y": 90
+    },
+    "shape=north_east": {
+      "model": "leopardaddons:block/nada",
+      "y": 270
+    },
+    "shape=north_south": {
+      "model": "leopardaddons:block/nada"
+    },
+    "shape=north_west": {
+      "model": "leopardaddons:block/nada",
+      "y": 180
+    },
+    "shape=south_east": {
+      "model": "leopardaddons:block/nada"
+    },
+    "shape=south_west": {
+      "model": "leopardaddons:block/nada",
+      "y": 90
+    }
+  }
+}

@@ -21,6 +21,14 @@ public class TabRegistry {
 				out.accept(ItemRegistry.kioskLinker.get());
 				out.accept(ItemRegistry.card.get());
 				out.accept(ItemRegistry.cardDevice.get());
+				out.accept(ItemRegistry.railItm.get());
+				out.accept(ItemRegistry.poweredItm.get());
+				out.accept(ItemRegistry.detectorItm.get());
+				out.accept(ItemRegistry.activatorItm.get());
+				out.accept(ItemRegistry.chargedDust.get());
+				out.accept(ItemRegistry.refinedDust.get());
+				out.accept(ItemRegistry.invisidust.get());
+				out.accept(ItemRegistry.chargedBlockItm.get());
 			})
 	.build());
 }
