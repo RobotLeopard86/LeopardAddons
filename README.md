@@ -12,7 +12,8 @@ Leopard Addons is a NeoForge-based mod for Minecraft: Java Edition, adding some 
 
 ## Dependencies
 * NeoForged for Minecraft: Java Edition 1.21.1, version 21.1.93+
-* CC: Tweaked for Minecraft: Java Edition 1.21, version 1.116.1+
+* CC: Tweaked for Minecraft: Java Edition 1.21.1, version 1.116.1+
+* TrafficCraft for Minecraft: Java Edition 1.21.1, version 1.1.3+
 
 ## Building
 This project builds like any other NeoForged mod, simply set up using Gradle in your IDE of choice (or not)
