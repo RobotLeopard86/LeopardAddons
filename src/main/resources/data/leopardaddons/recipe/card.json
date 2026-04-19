@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:iron_nugget"
+    },
+    "%": {
+      "item": "minecraft:redstone"
+    },
+    "$": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "###",
+    "#%$",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "leopardaddons:card"
+  }
+}

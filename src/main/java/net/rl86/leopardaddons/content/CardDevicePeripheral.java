@@ -69,4 +69,14 @@ public class CardDevicePeripheral implements IPeripheral {
 	public final void generateCard() throws LuaException {
 		generateNamedCard(new Coerced<String>(""));
 	}
+
+	@LuaFunction(mainThread=true)
+	public final void lock() throws LuaException {
+		physicalDevice.setLock(true);
+	}
+
+	@LuaFunction(mainThread=true)
+	public final void unlock() throws LuaException {
+		physicalDevice.setLock(false);
+	}
 }

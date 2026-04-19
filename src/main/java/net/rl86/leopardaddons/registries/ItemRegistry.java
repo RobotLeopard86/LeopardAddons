@@ -15,6 +15,7 @@ public class ItemRegistry {
 	
 	public static final DeferredHolder<Item, BlockItem> computerKiosk = registry.register("kiosk", () -> new BlockItem(BlockRegistry.computerKiosk.get(), new Item.Properties()));
 	public static final DeferredHolder<Item, BlockItem> cardDevice = registry.register("card_device", () -> new BlockItem(BlockRegistry.cardDevice.get(), new Item.Properties()));
+	public static final DeferredHolder<Item, BlockItem> swiper = registry.register("swiper", () -> new BlockItem(BlockRegistry.swiper.get(), new Item.Properties()));
 	public static final DeferredHolder<Item, KioskLinkerItem> kioskLinker = registry.register("linker", KioskLinkerItem::new);
 	public static final DeferredHolder<Item, CardItem> card = registry.register("card", CardItem::new);
 

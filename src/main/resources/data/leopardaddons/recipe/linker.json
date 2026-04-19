@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_torch"
+    },
+    "%": {
+      "item": "minecraft:iron_ingot"
+    },
+    "$": {
+      "item": "minecraft:redstone_dust"
+    }
+  },
+  "pattern": [
+    "# #",
+    "%$%",
+    " % "
+  ],
+  "result": {
+    "count": 1,
+    "id": "leopardaddons:linker"
+  }
+}

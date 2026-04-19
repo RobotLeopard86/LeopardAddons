@@ -1,12 +1,20 @@
 { 
 	"variants": { 
-		"facing=north,empty=true": { "model": "leopardaddons:block/card_dev", "y": 180 },
-		"facing=south,empty=true": { "model": "leopardaddons:block/card_dev" },
-		"facing=east,empty=true": { "model": "leopardaddons:block/card_dev", "y": 270 },
-		"facing=west,empty=true": { "model": "leopardaddons:block/card_dev", "y": 90 },
-		"facing=north,empty=false": { "model": "leopardaddons:block/card_dev_full", "y": 180 },
-		"facing=south,empty=false": { "model": "leopardaddons:block/card_dev_full" },
-		"facing=east,empty=false": { "model": "leopardaddons:block/card_dev_full", "y": 270 },
-		"facing=west,empty=false": { "model": "leopardaddons:block/card_dev_full", "y": 90 }
+		"facing=north,empty=true,locked=false": { "model": "leopardaddons:block/card_dev", "y": 180 },
+		"facing=south,empty=true,locked=false": { "model": "leopardaddons:block/card_dev" },
+		"facing=east,empty=true,locked=false": { "model": "leopardaddons:block/card_dev", "y": 270 },
+		"facing=west,empty=true,locked=false": { "model": "leopardaddons:block/card_dev", "y": 90 },
+		"facing=north,empty=false,locked=false": { "model": "leopardaddons:block/card_dev_full", "y": 180 },
+		"facing=south,empty=false,locked=false": { "model": "leopardaddons:block/card_dev_full" },
+		"facing=east,empty=false,locked=false": { "model": "leopardaddons:block/card_dev_full", "y": 270 },
+		"facing=west,empty=false,locked=false": { "model": "leopardaddons:block/card_dev_full", "y": 90 },
+		"facing=north,empty=true,locked=true": { "model": "leopardaddons:block/card_dev_lk", "y": 180 },
+		"facing=south,empty=true,locked=true": { "model": "leopardaddons:block/card_dev_lk" },
+		"facing=east,empty=true,locked=true": { "model": "leopardaddons:block/card_dev_lk", "y": 270 },
+		"facing=west,empty=true,locked=true": { "model": "leopardaddons:block/card_dev_lk", "y": 90 },
+		"facing=north,empty=false,locked=true": { "model": "leopardaddons:block/card_dev_lk_full", "y": 180 },
+		"facing=south,empty=false,locked=true": { "model": "leopardaddons:block/card_dev_lk_full" },
+		"facing=east,empty=false,locked=true": { "model": "leopardaddons:block/card_dev_lk_full", "y": 270 },
+		"facing=west,empty=false,locked=true": { "model": "leopardaddons:block/card_dev_lk_full", "y": 90 }
 	}
 }

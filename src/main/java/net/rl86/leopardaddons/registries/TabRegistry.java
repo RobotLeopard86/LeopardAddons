@@ -21,6 +21,7 @@ public class TabRegistry {
 				out.accept(ItemRegistry.kioskLinker.get());
 				out.accept(ItemRegistry.card.get());
 				out.accept(ItemRegistry.cardDevice.get());
+				out.accept(ItemRegistry.swiper.get());
 				out.accept(ItemRegistry.railItm.get());
 				out.accept(ItemRegistry.poweredItm.get());
 				out.accept(ItemRegistry.detectorItm.get());

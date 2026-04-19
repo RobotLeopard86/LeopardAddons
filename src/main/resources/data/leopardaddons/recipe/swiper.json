@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "#": {
+      "item": "minecraft:gold_nugget"
+    },
+    "%": {
+      "item": "minecraft:card"
+    },
+    "$": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "   ",
+    "#%#",
+    "$$$"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:swiper"
+  }
+}

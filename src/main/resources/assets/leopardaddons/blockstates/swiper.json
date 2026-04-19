@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=east,vertical=false": {"model":  "leopardaddons:block/swiper"},
+    "facing=west,vertical=false": {"model":  "leopardaddons:block/swiper"},
+    "facing=north,vertical=false": {"model":  "leopardaddons:block/swiper", "y": 90},
+    "facing=south,vertical=false": {"model":  "leopardaddons:block/swiper", "y": 90},
+    "facing=north,vertical=true": {"model":  "leopardaddons:block/swiper_vert", "y": 90},
+    "facing=south,vertical=true": {"model":  "leopardaddons:block/swiper_vert", "y": 270},
+    "facing=west,vertical=true": {"model":  "leopardaddons:block/swiper_vert"},
+    "facing=east,vertical=true": {"model":  "leopardaddons:block/swiper_vert", "y": 180}
+  }
+}

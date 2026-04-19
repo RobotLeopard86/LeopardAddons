@@ -77,6 +77,11 @@ public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicW
 		}
 	}
 
+	public void setLock(boolean state) {
+		level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(CardDeviceBlock.locked, state));
+		super.setChanged();
+	}
+
 	public ItemInteractionResult use(Player player) {
 		return use(player, ItemStack.EMPTY, InteractionHand.MAIN_HAND);
 	}
