@@ -9,6 +9,7 @@ import dan200.computercraft.api.peripheral.IPeripheral;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.component.CustomData;
+import org.jetbrains.annotations.NotNull;
 
 public class CardDevicePeripheral implements IPeripheral {
 	private final CardDeviceBE physicalDevice;
@@ -18,7 +19,7 @@ public class CardDevicePeripheral implements IPeripheral {
 	}
 	
 	@Override
-	public String getType() {
+	public @NotNull String getType() {
 		return "card_device";
 	}
 

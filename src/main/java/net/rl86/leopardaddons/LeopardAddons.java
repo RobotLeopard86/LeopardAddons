@@ -44,6 +44,8 @@ public class LeopardAddons
 
     private void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(PeripheralCapability.get(), BETypeRegistry.cardBE.get(), (be, side) -> be.getCCPeripheral());
+        event.registerBlockEntity(PeripheralCapability.get(), BETypeRegistry.swiperBE.get(), (be, side) -> be.getCCPeripheral());
+        event.registerBlockEntity(PeripheralCapability.get(), BETypeRegistry.remotePeripheralBE.get(), (be, side) -> be.getCCPeripheral());
     }
 
     @SubscribeEvent

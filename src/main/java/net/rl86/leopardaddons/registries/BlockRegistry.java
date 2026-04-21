@@ -6,10 +6,7 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.rl86.leopardaddons.LeopardAddons;
-import net.rl86.leopardaddons.content.CardDeviceBlock;
-import net.rl86.leopardaddons.content.ChargedDustBlock;
-import net.rl86.leopardaddons.content.ComputerKioskBlock;
-import net.rl86.leopardaddons.content.SwiperBlock;
+import net.rl86.leopardaddons.content.*;
 
 public class BlockRegistry {
 	
@@ -18,6 +15,7 @@ public class BlockRegistry {
 	public static final DeferredHolder<Block, ComputerKioskBlock> computerKiosk = registry.register("kiosk", ComputerKioskBlock::new);
 	public static final DeferredHolder<Block, CardDeviceBlock> cardDevice = registry.register("card_device", CardDeviceBlock::new);
 	public static final DeferredHolder<Block, SwiperBlock> swiper = registry.register("swiper", SwiperBlock::new);
+	public static final DeferredHolder<Block, RemotePeripheralBlock> remotePeripheral = registry.register("remote_peripheral", RemotePeripheralBlock::new);
 
 	public static final DeferredHolder<Block, ChargedDustBlock> chargedDustBlock = registry.register("charged_dust_block", ChargedDustBlock::new);
 	public static final DeferredHolder<Block, Block> hardenedDustBlock = registry.register("hardened_charged_dust_block", () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.SANDSTONE)));

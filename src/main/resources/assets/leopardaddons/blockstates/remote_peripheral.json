@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "facing=up": {"model": "leopardaddons:block/remote_peripheral_flat"},
+    "facing=down": {"model": "leopardaddons:block/remote_peripheral_flat", "z": 180},
+    "facing=north": {"model": "leopardaddons:block/remote_peripheral_wall"},
+    "facing=south": {"model": "leopardaddons:block/remote_peripheral_wall", "y": 180},
+    "facing=east": {"model": "leopardaddons:block/remote_peripheral_wall", "y":  90},
+    "facing=west": {"model": "leopardaddons:block/remote_peripheral_wall", "y": 270}
+  }
+}

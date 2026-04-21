@@ -3,7 +3,6 @@ package net.rl86.leopardaddons.content;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -11,7 +10,6 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -27,7 +25,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.rl86.leopardaddons.util.VoxelUtils;
 import org.jetbrains.annotations.NotNull;
 
-public class SwiperBlock extends Block /*implements EntityBlock*/ {
+public class SwiperBlock extends Block implements EntityBlock {
 
 	public SwiperBlock() {
 		super(Properties.of().noCollission().instabreak().pushReaction(PushReaction.DESTROY));
@@ -58,23 +56,26 @@ public class SwiperBlock extends Block /*implements EntityBlock*/ {
 	}
 
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext collision) {
-		return VoxelUtils.rotateVoxel(Direction.WEST, state.getValue(facing), state.getValue(vertical) ? Shapes.box(0.0, 0.125, 0.3125, 0.25, 0.875, 0.6875) : Shapes.box(0.125, 0.0, 0.3125, 0.875, 0.25, 0.6875));
+	public @NotNull VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext collision) {
+		return VoxelUtils.rotateVoxel(Direction.WEST, state.getValue(facing), state.getValue(vertical) ? Shapes.or(
+				Shapes.box(0.125000, 0.000000, 0.312500, 0.875000, 0.062500, 0.687500),
+				Shapes.box(0.187500, 0.062500, 0.375000, 0.812500, 0.250000, 0.437500),
+				Shapes.box(0.187500, 0.062500, 0.562500, 0.812500, 0.250000, 0.625000)
+		) : Shapes.or(
+				Shapes.box(0.000000, 0.125000, 0.312500, 0.062500, 0.875000, 0.687500),
+				Shapes.box(0.062500, 0.187500, 0.375000, 0.250000, 0.812500, 0.437500),
+				Shapes.box(0.062500, 0.187500, 0.562500, 0.250000, 0.812500, 0.625000)
+		));
 	}
 	
-	/*@Override
-    protected final @NotNull InteractionResult useWithoutItem(BlockState state, Level world, BlockPos pos, Player player, BlockHitResult hit) {
-		return world.getBlockEntity(pos) instanceof CardDeviceBE dev ? dev.use(player).result() : InteractionResult.PASS;
-    }
-
 	@Override
 	protected @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-		return world.getBlockEntity(pos) instanceof CardDeviceBE dev ? dev.use(player, stack, hand) : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+		return world.getBlockEntity(pos) instanceof SwiperBE dev ? dev.use(player, stack, hand) : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
 
 	@Override
 	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new CardDeviceBE(pos, state);
-	}*/
+		return new SwiperBE(pos, state);
+	}
 
 }

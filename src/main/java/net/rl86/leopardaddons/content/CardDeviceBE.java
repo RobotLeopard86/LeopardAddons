@@ -10,12 +10,12 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.block.state.BlockState;
 import net.rl86.leopardaddons.registries.BETypeRegistry;
 import net.rl86.leopardaddons.registries.ItemRegistry;
@@ -71,6 +71,7 @@ public class CardDeviceBE extends AbstractContainerBlockEntity implements BasicW
 			if(!name.equalsIgnoreCase("")) {
 				itm.set(DataComponents.CUSTOM_NAME, Component.literal(name));
 			}
+			itm.set(DataComponents.CUSTOM_DATA, CustomData.of(new CompoundTag()));
 			inventory.set(0, itm);
 			level.setBlockAndUpdate(getBlockPos(), getBlockState().setValue(CardDeviceBlock.empty, false));
 			super.setChanged();
