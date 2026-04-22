@@ -3,7 +3,7 @@ plugins {
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.140'
+    id 'net.neoforged.moddev' version '2.0.141'
 }
 
 version = mod_version
@@ -42,6 +42,7 @@ neoForge {
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            devLogin = true
         }
 
         server {
@@ -104,7 +105,11 @@ neoForge {
         // For all intends and purposes: You can treat this dependency as if it is a normal library you would use.
         implementation "net.neoforged:neoforge:${neo_version}"
         implementation "maven.modrinth:cc-tweaked:${cc_version}"
-        implementation "maven.modrinth:trafficcraft:${traffic_version}"
+    }
+
+    parchment {
+        minecraftVersion = "1.21.1"
+        mappingsVersion = "2024.11.17"
     }
 }
 

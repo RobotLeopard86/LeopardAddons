@@ -50,14 +50,16 @@ public class RemotePeripheralItem extends BlockItem {
                 case Direction.EAST -> 4;
                 case Direction.WEST -> 5;
             }));
+
             if (nbt.contains("link") && context.getClickedPos().getX() == ((IntTag) nbt.getCompound("link").get("x")).getAsInt() &&
                     context.getClickedPos().getY() == ((IntTag) nbt.getCompound("link").get("y")).getAsInt() &&
                     context.getClickedPos().getZ() == ((IntTag) nbt.getCompound("link").get("z")).getAsInt()) {
                 return InteractionResult.SUCCESS;
             }
             nbt.put("link", lnk);
+
             context.getItemInHand().set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
-            Minecraft.getInstance().player.sendSystemMessage(Component.literal("Selected peripheral @ " + lnk.get("x").getAsString() + " " + lnk.get("y").getAsString() + " " + lnk.get("z").getAsString()));
+            if(context.getLevel().isClientSide) Minecraft.getInstance().player.sendSystemMessage(Component.literal("Selected peripheral @ " + lnk.get("x").getAsString() + " " + lnk.get("y").getAsString() + " " + lnk.get("z").getAsString()));
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.FAIL;
@@ -68,6 +70,7 @@ public class RemotePeripheralItem extends BlockItem {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         if(!context.getItemInHand().has(DataComponents.CUSTOM_DATA) || (context.getItemInHand().has(DataComponents.CUSTOM_DATA) && !context.getItemInHand().get(DataComponents.CUSTOM_DATA).contains("link"))) return InteractionResult.FAIL;
+
         InteractionResult result = super.place(context);
         if(result.consumesAction() && !level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
@@ -76,6 +79,7 @@ public class RemotePeripheralItem extends BlockItem {
                 if(!nbt.contains("link")) return InteractionResult.FAIL;
                 CompoundTag lnk = nbt.getCompound("link");
                 if(!lnk.contains("x") || !lnk.contains("y") || !lnk.contains("z") || !lnk.contains("dir")) return InteractionResult.FAIL;
+
                 rpbe.configureOnPlace(new BlockPos(lnk.getInt("x"), lnk.getInt("y"), lnk.getInt("z")), switch(lnk.getInt("dir")) {
                    case 0 -> Direction.DOWN;
                    case 1 -> Direction.UP;

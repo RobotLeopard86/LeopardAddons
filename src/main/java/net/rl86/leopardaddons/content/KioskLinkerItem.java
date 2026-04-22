@@ -35,7 +35,7 @@ public class KioskLinkerItem extends Item {
 			nbt.remove("link");
 			context.getItemInHand().set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
 
-			Minecraft.getInstance().player.sendSystemMessage(Component.literal("Linking successful!"));
+			if(context.getLevel().isClientSide) Minecraft.getInstance().player.sendSystemMessage(Component.literal("Linking successful!"));
 			return InteractionResult.SUCCESS;
 		} else if(selectedBlock instanceof AbstractComputerBlock) {
 			CompoundTag nbt = context.getItemInHand().getOrDefault(DataComponents.CUSTOM_DATA, CustomData.EMPTY).copyTag();
@@ -43,6 +43,7 @@ public class KioskLinkerItem extends Item {
 			lnk.put("x", IntTag.valueOf(context.getClickedPos().getX()));
 			lnk.put("y", IntTag.valueOf(context.getClickedPos().getY()));
 			lnk.put("z", IntTag.valueOf(context.getClickedPos().getZ()));
+
 			if(nbt.contains("link") && context.getClickedPos().getX() == ((IntTag)nbt.getCompound("link").get("x")).getAsInt() &&
 					context.getClickedPos().getY() == ((IntTag)nbt.getCompound("link").get("y")).getAsInt() &&
 					context.getClickedPos().getZ() == ((IntTag)nbt.getCompound("link").get("z")).getAsInt()) {
@@ -50,7 +51,8 @@ public class KioskLinkerItem extends Item {
 			}
 			nbt.put("link", lnk);
 			context.getItemInHand().set(DataComponents.CUSTOM_DATA, CustomData.of(nbt));
-			Minecraft.getInstance().player.sendSystemMessage(Component.literal("Selected computer @ " + lnk.get("x").getAsString() + " " + lnk.get("y").getAsString() + " " + lnk.get("z").getAsString()));
+
+			if(context.getLevel().isClientSide) Minecraft.getInstance().player.sendSystemMessage(Component.literal("Selected computer @ " + lnk.get("x").getAsString() + " " + lnk.get("y").getAsString() + " " + lnk.get("z").getAsString()));
 			return InteractionResult.SUCCESS;
 		}
 		return InteractionResult.PASS;

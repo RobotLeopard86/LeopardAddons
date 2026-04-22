@@ -34,19 +34,26 @@ public class RemotePeripheralBlock extends Block implements EntityBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState baseState = super.getStateForPlacement(context);
-        baseState = baseState.setValue(facing, context.getClickedFace().getOpposite());
+        Direction clicked = context.getClickedFace();
+        baseState = baseState.setValue(facing, (clicked == Direction.UP || clicked == Direction.DOWN) ? clicked : clicked.getOpposite());
         return baseState;
     }
 
     @Override
     public @NotNull VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext collision) {
-        if(state.getValue(facing) == Direction.UP || state.getValue(facing) == Direction.DOWN) return Shapes.or(
+        if(state.getValue(facing) == Direction.UP) return Shapes.or(
                 Shapes.box(0.125000, 0.000000, 0.187500, 0.187500, 0.062500, 0.812500),
                 Shapes.box(0.812500, 0.000000, 0.187500, 0.875000, 0.062500, 0.812500),
                 Shapes.box(0.187500, 0.000000, 0.125000, 0.812500, 0.062500, 0.875000),
                 Shapes.box(0.656250, 0.062500, 0.656250, 0.718750, 0.375000, 0.718750)
         );
-        return VoxelUtils.rotateVoxel(Direction.NORTH, state.getValue(facing), Shapes.or(
+        else if(state.getValue(facing) == Direction.DOWN) return VoxelUtils.flipVoxelY(Shapes.or(
+                Shapes.box(0.125000, 0.000000, 0.187500, 0.187500, 0.062500, 0.812500),
+                Shapes.box(0.812500, 0.000000, 0.187500, 0.875000, 0.062500, 0.812500),
+                Shapes.box(0.187500, 0.000000, 0.125000, 0.812500, 0.062500, 0.875000),
+                Shapes.box(0.656250, 0.062500, 0.281250, 0.718750, 0.375000, 0.343750)
+        ));
+        else return VoxelUtils.rotateVoxel(Direction.WEST, state.getValue(facing), Shapes.or(
                 Shapes.box(0.187500, 0.000000, 0.187500, 0.250000, 0.062500, 0.812500),
                 Shapes.box(0.187500, 0.687500, 0.187500, 0.250000, 0.750000, 0.812500),
                 Shapes.box(0.187500, 0.062500, 0.125000, 0.250000, 0.687500, 0.875000),

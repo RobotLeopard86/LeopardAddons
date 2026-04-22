@@ -27,4 +27,16 @@ public class VoxelUtils {
 
 		return buffer[0];
 	}
+
+	public static VoxelShape flipVoxelY(VoxelShape shape) {
+		VoxelShape[] buffer = new VoxelShape[]{ Shapes.empty() };
+		shape.forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> {
+			double newMinY = 1.0 - maxY;
+			double newMaxY = 1.0 - minY;
+
+			VoxelShape box = Shapes.box(minX, newMinY, minZ, maxX, newMaxY, maxZ);
+			buffer[0] = Shapes.or(buffer[0], box);
+		});
+		return buffer[0];
+	}
 }

@@ -10,6 +10,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.IntTag;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.rl86.leopardaddons.LeopardAddons;
 import net.rl86.leopardaddons.registries.BETypeRegistry;
 import org.jetbrains.annotations.NotNull;
 
@@ -52,6 +53,7 @@ public class RemotePeripheralBE extends BlockEntity implements Position {
 
 	@Override
 	protected void saveAdditional(CompoundTag data, HolderLookup.Provider p) {
+		if(!configured) loadAdditional(data, p);
 		data.put("LinkedX", IntTag.valueOf(lpx));
 		data.put("LinkedY", IntTag.valueOf(lpy));
 		data.put("LinkedZ", IntTag.valueOf(lpz));

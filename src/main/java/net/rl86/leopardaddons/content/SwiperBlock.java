@@ -58,13 +58,13 @@ public class SwiperBlock extends Block implements EntityBlock {
 	@Override
 	public @NotNull VoxelShape getShape(BlockState state, BlockGetter getter, BlockPos pos, CollisionContext collision) {
 		return VoxelUtils.rotateVoxel(Direction.WEST, state.getValue(facing), state.getValue(vertical) ? Shapes.or(
-				Shapes.box(0.125000, 0.000000, 0.312500, 0.875000, 0.062500, 0.687500),
-				Shapes.box(0.187500, 0.062500, 0.375000, 0.812500, 0.250000, 0.437500),
-				Shapes.box(0.187500, 0.062500, 0.562500, 0.812500, 0.250000, 0.625000)
-		) : Shapes.or(
 				Shapes.box(0.000000, 0.125000, 0.312500, 0.062500, 0.875000, 0.687500),
 				Shapes.box(0.062500, 0.187500, 0.375000, 0.250000, 0.812500, 0.437500),
 				Shapes.box(0.062500, 0.187500, 0.562500, 0.250000, 0.812500, 0.625000)
+		) : Shapes.or(
+				Shapes.box(0.125000, 0.000000, 0.312500, 0.875000, 0.062500, 0.687500),
+				Shapes.box(0.187500, 0.062500, 0.375000, 0.812500, 0.250000, 0.437500),
+				Shapes.box(0.187500, 0.062500, 0.562500, 0.812500, 0.250000, 0.625000)
 		));
 	}
 	
